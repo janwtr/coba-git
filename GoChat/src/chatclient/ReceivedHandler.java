@@ -13,9 +13,21 @@ public class ReceivedHandler extends Thread {
     @Override
     public void run() {
         do {
-            received = networkInput.nextLine();
+            try {
+                received = networkInput.nextLine();
+            } catch(NoSuchElementException e) {
+                System.out.println("Connectio Closed");
+                //break;
+                System.exit(0);
+            } 
             System.out.println("\n"+received);               
             System.out.print("#"+myName+">");
+
         } while (!received.equals("QUIT"));
+        System.out.println("Connectio Closed");
+        //break;
+        System.exit(0);
+
+        
     }
 }

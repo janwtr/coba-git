@@ -25,8 +25,10 @@ public class ClientChat {
         String myName;
         try {
             socket = new Socket(host,PORT);
+            
             Scanner networkInput = new Scanner(socket.getInputStream());
             PrintWriter networkOutput =	new PrintWriter(socket.getOutputStream(),true);
+            
             Scanner userEntry = new Scanner(System.in);            
             String message;                   
             
