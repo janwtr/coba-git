@@ -13,6 +13,7 @@ class ClientHandler extends Thread {
     private Scanner friendInput;
     private PrintWriter friendOutput;
     private String myname;
+    private int jmlOnline;
     
 
     public ClientHandler(Socket socket, HashMap<String,Socket> onlineChat) 	{        
@@ -44,7 +45,15 @@ class ClientHandler extends Thread {
                 fren = received.split(":");
                 forward(fren[0], fren[1]);    
             } else {
-                networkOutput.println("[tujuan]:[pesan] or QUIT");
+                try {
+                    this.broadcast();
+                } catch (IOException e) {
+					// TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            	jmlOnline = onlineChat.size();
+              	//networkOutput.println("Client connect : "+value1);            	
+                networkOutput.println("[tujuan]:[pesan] or QUIT "+jmlOnline);
             }
         } while (!received.equals("QUIT"));  
         
@@ -74,5 +83,23 @@ class ClientHandler extends Thread {
         } else {
             networkOutput.println(fren0+" not online!");            
         }        
+    }
+    private void broadcast() throws IOException {
+    	Set<String> keys = onlineChat.keySet();
+    	String daftar = "";
+    	for (String key : keys) {
+    	    //System.out.println(key);
+    	    daftar += key+" | ";
+    	}
+    	System.out.println(daftar);
+    	
+    	for (String key : keys) {
+     	    //System.out.println(key);
+    		friendOutput = new PrintWriter(onlineChat.get(key).getOutputStream(),true);
+    		friendOutput.println("Online "+ onlineChat.size() +" User : "+ daftar);
+     	    //daftar += key;
+     	}
+    	//
+	    //
     }
 }
