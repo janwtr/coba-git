@@ -1,6 +1,6 @@
 ## Info
-> GoChat	Digunakan untuk aplikasi client chathing
-> GoChatServer	Digunakan untuk aplikasi server chathing
+- GoChat	Digunakan untuk aplikasi client chathing
+- GoChatServer	Digunakan untuk aplikasi server chathing
 
 ## Penggunaan
 Jalankan aplikasi server pada komputerb server.
