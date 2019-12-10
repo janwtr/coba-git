@@ -1,3 +1,4 @@
+![alt text](https://github.com/janwtr/go-chat/blob/master/button_gochat.png)
 ## Info
 - GoChat	Digunakan untuk aplikasi client chathing
 - GoChatServer	Digunakan untuk aplikasi server chathing
